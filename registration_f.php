@@ -23,7 +23,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $email = $_POST["e-mail"];
 
     // добавляем соль к паролю и хешируем
-    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+    $salt = bin2hex(12); // случайная соль в виде 16-байтовой строки
+    $hashed_password = hash('sha256', $pass . $salt);
+   
 
     // формируем запрос на добавление пользователя в БД
     $sql = "INSERT INTO users (login, pass, name, surname, info, email)
