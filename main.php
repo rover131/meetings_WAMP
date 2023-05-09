@@ -11,27 +11,39 @@
         <p>Здесь вы можете найти новых друзей, партнеров и душевных собеседников.</p>
       <div class="user-info">
         <form method="post" action="edit_profile_f.php">
-            <!-- NOT EDIT!!!!!!!!!!!!!!!!!!!!!!!!!!!
-            <label for="login">login:</label>
-            <input type="text" id="login" name="login" value="<?php echo $user['login']; ?>" required><br>   -->
+          <?php
+            $servername = "localhost";
+            $username = "root";
+            $password = "";
+            $dbname = "kr";
+            session_start();
+            if (isset($_SESSION['id_ses'])) { // получаем логин пользователя
+              $login = $_SESSION['id_ses'];
+            } else {
+              $login = NULL;
+            }
+            $conn = mysqli_connect($servername, $username, $password, $dbname); // подключаемся к БД  
+            $sql = "SELECT name, surname, info, email, pass FROM users WHERE login = '$login'";
+            $res = mysqli_query($conn, $sql);
+            $res = $res->fetch_assoc();
+          ?> 
 
+
+        
             <label for="name">Имя:</label>
-            <input type="text" id="name" name="name" value="<?php echo $user['name']; ?>" required><br>
+            <input type="text" id="name" name="name" value="<?php echo $res['name']; ?>" required><br>
 
             <label for="surname">Фамилия:</label>
-            <input type="text" id="surname" name="surname" value="<?php echo $user['surname']; ?>" required><br>
+            <input type="text" id="surname" name="surname" value="<?php echo $res['surname']; ?>" required><br>
 
             <label for="info">info:</label>
-            <input type="info" id="info" name="info" value="<?php echo $user['info']; ?>" required><br>
+            <input type="info" id="info" name="info" value="<?php echo $res['info']; ?>" required><br>
 
             <label for="email">Email:</label>
-            <input type="email" id="email" name="email" value="<?php echo $user['email']; ?>" required><br>
+            <input type="email" id="email" name="email" value="<?php echo $res['email']; ?>" required><br>
 
-            <label for="password">Новый пароль:</label>
-            <input type="password" id="password" name="password"><br>
-
-            <label for="confirm_password">Подтвердите новый пароль:</label>
-            <input type="password" id="confirm_password" name="confirm_password"><br>
+            <label for="pass">Новый пароль:</label>
+            <input type="pass" id="pass" name="pass"><br>
 
             <input type="submit" value="Сохранить изменения">
         </form>

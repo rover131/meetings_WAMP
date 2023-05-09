@@ -34,7 +34,7 @@
                         <label for="inf">Информация:</label><br>
                         <textarea id="information" name="information" required></textarea><br>
 
-                        <label for="e-mail">e-mail:</label>
+                        <label for="email">email:</label>
                         <input type="text" id="email" name="email" required><br>
 
                         <input type="submit" value="Зарегистрироваться">

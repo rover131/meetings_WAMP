@@ -12,7 +12,7 @@ $sql = "SELECT pass FROM users WHERE login = '$login'";
 $pass_sql = mysqli_query($conn, $sql);
 
 
-if (True) {
+if ($pass_sql) {
     $pass_sql = $pass_sql->fetch_assoc();
     $pass_sql = $pass_sql['pass'];  //хэшированный пароль из БД
     $salt = bin2hex(12); // соль

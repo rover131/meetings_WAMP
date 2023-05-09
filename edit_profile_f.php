@@ -15,11 +15,12 @@ if (!$conn) {
 // обработка отправленной формы
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // получаем данные из формы
-    $pass = $_POST["password"];
+    
     $name = $_POST["name"];
     $surname = $_POST["surname"];
     $info = $_POST["info"];
     $email = $_POST["email"];
+    $pass = $_POST["pass"];
     session_start();
     if (isset($_SESSION['id_ses'])) {
         $login = $_SESSION['id_ses'];

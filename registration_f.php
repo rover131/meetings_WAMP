@@ -20,7 +20,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $name = $_POST["first_name"];
     $surname = $_POST["last_name"];
     $info = $_POST["information"];
-    $email = $_POST["e-mail"];
+    $email = $_POST["email"];
 
     // добавляем соль к паролю и хешируем
     $salt = bin2hex(12); // случайная соль в виде 16-байтовой строки
