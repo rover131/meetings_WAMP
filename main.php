@@ -9,11 +9,22 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Название сайта</title>
+    <title>Сайт знакомств</title>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
+  <div class="content">
+      <div class="links">
+        <ul>
+          <li><a href="search.php">Поиск</a></li>
+          <li><a href="likes.php">Симпатии</a></li>
+          <li><a href="matches.php">Взаимность</a></li>
+          <li><a href="about.php">О сайте</a></li>
+          <li><a href="exit.php">Выход</a></li>
+        </ul>
+      </div>
+    </div>
     <div class="header">
         <h2>Добро пожаловать на сайт знакомств!</h2>
         <p>Здесь вы можете найти новых друзей, партнеров и душевных собеседников.</p>
@@ -55,17 +66,6 @@
 
             <input type="submit" value="Сохранить изменения">
         </form>
-      </div>
-    </div>
-    <div class="content">
-      <div class="links">
-        <ul>
-          <li><a href="search.php">Поиск</a></li>
-          <li><a href="likes.php">Симпатии</a></li>
-          <li><a href="matches.php">Взаимность</a></li>
-          <li><a href="about.php">О сайте</a></li>
-          <li><a href="exit.php">Выход</a></li>
-        </ul>
       </div>
     </div>
   </body>
