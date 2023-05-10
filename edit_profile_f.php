@@ -40,7 +40,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             WHERE login='$login'";
 
     if ($conn->query($sql) === TRUE) {
-        echo "Данные успешно обновлены";
+        echo "<b>Данные успешно обновлены!<p>";
+        echo "<a href=main.php> Нажмите,</a> чтобы вернуться на главную страницу";
     } else {
         echo "Ошибка: " . $sql . "<br>" . $conn->error;
     }
