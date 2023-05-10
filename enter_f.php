@@ -21,7 +21,6 @@ if ($pass_sql) {
         session_start(); 
         $_SESSION['id_ses'] = $login;  // сохраняем сессию
         header('Location: http://localhost/kr/main.php');
-        exit;
     } else {
         header('Location: http://localhost/kr/enter.php');
         }

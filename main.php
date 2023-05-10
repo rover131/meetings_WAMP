@@ -1,3 +1,11 @@
+<?php
+// Проверяем вошел ли пользователь
+  session_start(); 
+  if ($_SESSION['id_ses'] == NULL){
+    header('Location: http://localhost/kr/enter.php');
+  } 
+?>
+
 <!DOCTYPE html>
 <html>
   <head>
@@ -12,11 +20,11 @@
       <div class="user-info">
         <form method="post" action="edit_profile_f.php">
           <?php
+            
             $servername = "localhost";
             $username = "root";
             $password = "";
             $dbname = "kr";
-            session_start();
             if (isset($_SESSION['id_ses'])) { // получаем логин пользователя
               $login = $_SESSION['id_ses'];
             } else {
@@ -56,7 +64,7 @@
           <li><a href="likes.php">Симпатии</a></li>
           <li><a href="matches.php">Взаимность</a></li>
           <li><a href="about.php">О сайте</a></li>
-          <li><a href="enter.php">Выход</a></li>
+          <li><a href="exit.php">Выход</a></li>
         </ul>
       </div>
     </div>

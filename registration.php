@@ -1,6 +1,11 @@
 <?php
-
+// Проверяем вошел ли пользователь
+  session_start(); 
+  if ($_SESSION['id_ses'] == NULL){
+    header('Location: http://localhost/kr/enter.php');
+  } 
 ?>
+
  <!DOCTYPE html>
  <html lang = "ru">
     <head>

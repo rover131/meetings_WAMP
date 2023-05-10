@@ -1,4 +1,12 @@
 <?php
+// Проверяем вошел ли пользователь
+  session_start(); 
+  if ($_SESSION['id_ses'] == NULL){
+    header('Location: http://localhost/kr/enter.php');
+  } 
+?>
+
+<?php
 // подключаемся к базе данных
 $servername = "localhost";
 $username = "root";

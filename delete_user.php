@@ -1,4 +1,12 @@
 <?php
+// Проверяем вошел ли пользователь
+  session_start(); 
+  if ($_SESSION['id_ses'] == NULL){
+    header('Location: http://localhost/kr/enter.php');
+  } 
+?>
+
+<?php
 
 // Устанавливаем соединение с базой данных
 // подключаемся к базе данных
