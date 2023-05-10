@@ -1,12 +1,4 @@
 <?php
-// Проверяем вошел ли пользователь
-  session_start(); 
-  if ($_SESSION['id_ses'] == NULL){
-    header('Location: http://localhost/kr/enter.php');
-  } 
-?>
-
-<?php
 // подключаемся к базе данных
 $servername = "localhost";
 $username = "root";
@@ -38,7 +30,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // формируем запрос на добавление пользователя в БД
     $sql = "INSERT INTO users (login, pass, name, surname, info, email)
             VALUES ('$login', '$hashed_password', '$name', '$surname', '$info', '$email')";
-
+    
     if (mysqli_query($conn, $sql)) {
         // если запрос выполнен успешно, перенаправляем на страницу входа
         header("Location: enter.php");

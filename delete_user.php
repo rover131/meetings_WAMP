@@ -1,7 +1,7 @@
 <?php
-// Проверяем вошел ли пользователь
+// Проверяем вошел ли админ и верная ли у него роль
   session_start(); 
-  if ($_SESSION['id_ses'] == NULL){
+  if ($_SESSION['id_ses'] == NULL || $_SESSION['id_role'] != 1){
     header('Location: http://localhost/kr/enter.php');
   } 
 ?>
@@ -23,7 +23,6 @@ if (!$connection) {
 }
 
 // получаем логин пользователя
-session_start();
 if (isset($_SESSION['id_ses'])) { 
     $login = $_SESSION['id_ses'];
 } else {
@@ -34,22 +33,31 @@ if (isset($_SESSION['id_ses'])) {
 $result = mysqli_query($connection, "SELECT * FROM users WHERE login NOT IN ('$login', 'admin')");
 
 // Выводим таблицу с кнопками
-echo "<table>";
-while ($row = mysqli_fetch_assoc($result)) {
-    echo "<tr>";
-    echo "<td>" . $row["login"] . "</td>";
-    echo "<td>" . $row["name"] . "</td>";
-    echo "<td>" . $row["surname"] . "</td>";
-    echo "<td>" . $row["info"] . "</td>";
-    echo "<td><form method='post'><input type='hidden' name='user_id' value='" . $row["id_user"] . "'><button type='submit' name='delete_user'>Удалить</button></form></td>";
-    echo "</tr>";
-}
+if ($result->num_rows > 0) {
+    // Выводим данные в HTML таблицу
+    echo "<table>";
+    echo "<tr><th>id_user</th><th>login</th><th>name</th><th>surname</th><th>info</th></tr>";
+
+    foreach($result as $row) {
+      echo "<tr>";
+      echo "<td>" . $row["id_user"] . "</td>";
+      echo "<td>" . $row["login"] . "</td>";
+      echo "<td>" . $row["name"] . "</td>";
+      echo "<td>" . $row["surname"] . "</td>";
+      echo "<td>" . $row["info"] . "</td>";
+      echo "<td><form method='post'><input type='hidden' name='id_user' value='" . $row["id_user"] . "'><button type='submit' name='delete_user'>Delete</button></form></td>";
+   
+      echo "</tr>";
+    }
+  } else {
+    echo "0 результатов";
+  }
 echo "</table>";
 
 // Обрабатываем нажатие кнопки
 if (isset($_POST["delete_user"])) {
-    $user_id = $_POST["user_id"];
-    mysqli_query($connection, "DELETE FROM users WHERE id_user='$user_id'");
+    $id_user = $_POST["id_user"];
+    mysqli_query($connection, "DELETE FROM users WHERE id_user='$id_user'");
     header("Location: delete_user.php");
 }
 ?>

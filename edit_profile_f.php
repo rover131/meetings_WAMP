@@ -1,7 +1,7 @@
 <?php
-// Проверяем вошел ли пользователь
+// Проверяем вошел ли пользователь и верная ли у него роль
   session_start(); 
-  if ($_SESSION['id_ses'] == NULL){
+  if ($_SESSION['id_ses'] == NULL || $_SESSION['id_role'] != 2){
     header('Location: http://localhost/kr/enter.php');
   } 
 ?>
