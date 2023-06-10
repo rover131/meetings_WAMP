@@ -14,20 +14,17 @@
     <link rel="stylesheet" href="style.css">
   </head>
   <body>
-  <div class="content">
-      <div class="links">
-        <ul>
-          <li><a href="search.php">Поиск</a></li>
-          <li><a href="likes.php">Симпатии</a></li>
-          <li><a href="matches.php">Взаимность</a></li>
-          <li><a href="about.php">О сайте</a></li>
-          <li><a href="exit.php">Выход</a></li>
-        </ul>
-      </div>
-    </div>
-    <div class="header">
-        <h2>Добро пожаловать на сайт знакомств!</h2>
-        <p>Здесь вы можете найти новых друзей, партнеров и душевных собеседников.</p>
+      <header>
+        <nav class="navigation">
+          <a href="search.php">Поиск</a>
+          <a href="likes.php">Симпатии</a>
+          <a href="matches.php">Взаимность</a>
+          <a href="about.php">О сайте</a>
+          <a href="exit.php">Выход</a>
+        </nav>
+    </header>
+    <div>
+        <h2>Личная информация пользователя:</h2>
       <div class="user-info">
         <form method="post" action="edit_profile_f.php">
           <?php
@@ -47,16 +44,14 @@
             $res = $res->fetch_assoc();
           ?> 
 
-
-        
             <label for="name">Имя:</label>
             <input type="text" id="name" name="name" value="<?php echo $res['name']; ?>" required><br>
 
             <label for="surname">Фамилия:</label>
             <input type="text" id="surname" name="surname" value="<?php echo $res['surname']; ?>" required><br>
 
-            <label for="info">info:</label>
-            <input type="info" id="info" name="info" value="<?php echo $res['info']; ?>" required><br>
+            <label for="info">Информация о себе:</label><br>
+            <textarea name="info" id="info" rows="5" cols="30"><?php echo $res['info']; ?></textarea><br>
 
             <label for="email">Email:</label>
             <input type="email" id="email" name="email" value="<?php echo $res['email']; ?>" required><br>
@@ -64,7 +59,7 @@
             <label for="pass">Новый пароль:</label>
             <input type="pass" id="pass" name="pass"><br>
 
-            <input type="submit" value="Сохранить изменения">
+            <input class=button type="submit" value="Сохранить изменения">
         </form>
       </div>
     </div>

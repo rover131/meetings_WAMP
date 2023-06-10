@@ -30,6 +30,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // формируем запрос на добавление пользователя в БД
     $sql = "INSERT INTO users (login, pass, name, surname, info, email)
             VALUES ('$login', '$hashed_password', '$name', '$surname', '$info', '$email')";
+
+    //add admin
+    // $sql = "INSERT INTO users
+    // VALUES (1, '$login', '$hashed_password', '$name', '$surname', '$info', '$email', 1)";
     
     if (mysqli_query($conn, $sql)) {
         // если запрос выполнен успешно, перенаправляем на страницу входа

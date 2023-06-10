@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Сайт знакомств</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+</html>
 <?php
 // Проверяем вошел ли пользователь и верная ли у него роль
   session_start(); 
@@ -42,16 +50,20 @@ $result = mysqli_query($connection, $sql);
 if ($result->num_rows > 0) {
     // Выводим данные в HTML таблицу
     echo "<table>";
-    echo "<tr><th>id_user</th><th>login</th><th>name</th><th>surname</th><th>info</th></tr>";
+    echo "<tr><th>login</th><th>name</th><th>surname</th><th>info</th></tr>";
 
     foreach($result as $row) {
       echo "<tr>";
-      echo "<td>" . $row["id_user"] . "</td>";
-      echo "<td>" . $row["login"] . "</td>";
-      echo "<td>" . $row["name"] . "</td>";
-      echo "<td>" . $row["surname"] . "</td>";
-      echo "<td>" . $row["info"] . "</td>";
-      echo "<td><form method='post'><input type='hidden' name='id_user' value='" . $row["id_user"] . "'><button type='submit' name='like_user'>Like</button></form></td>";
+      echo "<td><p class='tid'>" . $row["login"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["name"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["surname"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["info"] . "</td></p>";
+      echo "<td>
+      <form method='post'>
+      <input type='hidden' name='id_user' value='" . $row["id_user"] . "'>
+      <p class ='button'> <button type='submit' name='like_user'>Like</button></p>
+      </form>
+      </td>";
    
       echo "</tr>";
     }
@@ -66,7 +78,7 @@ if (isset($_POST["like_user"])) {
     mysqli_query($connection, "INSERT sympathy(who, whom) VALUES ((SELECT id_user FROM users WHERE login = '$login'), $id_user)");
     header("Location: likes.php");
 }
-echo "<a href=main.php> Нажмите,</a> чтобы вернуться на главную страницу";
+echo "<br><a href=main.php> Нажмите,</a> чтобы вернуться на главную страницу";
 // Закрываем соединение с базой данных
 mysqli_close($connection);
 

@@ -33,15 +33,71 @@ body {
 }
 .button {
     display: block;
-    padding: 5px 24px;
+    padding: 3px 20px;
     background: rgb(218, 151, 243);
     border-radius: 5px;
     color:rgb(255, 254, 255);
     text-transform: uppercase;
     text-align: center;
     line-height: 20px;
+    font-size:larger;
     cursor: pointer;
+    margin-left: 2px;
 }
 .button:hover {
     background-color: rgb(143, 201, 232);
 }
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 20px 100px;
+    background: rgb(197, 108, 234);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    z-index: 99;
+}
+.navigation a {
+    position: relative;
+    font-size: 1.1em;
+    color: aliceblue;
+    text-decoration: none;
+    font-weight: 500;
+    margin-left: 40px;  
+}
+h2 {
+    margin-top: 5%;
+    margin-left: 10px;
+}
+.user-info {
+    line-height: 2;
+    margin-left: 10px;
+}
+table {
+    border-collapse: collapse;
+    border: 100px palevioletred;
+}
+th {
+    border: 1px solid rgb(233, 111, 239);
+    padding-bottom: 5px;
+}
+.tid {
+    border: 1px solid rgb(233, 111, 239);
+    padding: 5px;
+    margin-bottom: 3px;
+}
+div {
+    margin-bottom:7px;
+}
+.text{
+    text-indent:30px;
+    text-align:justify;
+    margin-bottom: 35px;
+    font-size:120%;
+    font-style: italic;
+    padding-right: 100px;
+    padding-left: 100px;
+}
+

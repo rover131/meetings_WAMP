@@ -1,3 +1,11 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Сайт знакомств</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+</html>
 <?php
 // Проверяем вошел ли пользователь и верная ли у него роль
   session_start(); 
@@ -29,10 +37,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $info = $_POST["info"];
     $email = $_POST["email"];
     $pass = $_POST["pass"];
-    session_start();
     if (isset($_SESSION['id_ses'])) {
         $login = $_SESSION['id_ses'];
-    // использовать имя пользователя, например, вывести его на страницу
     }
     else {
         $login = NULL;
@@ -40,9 +46,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // добавляем соль к паролю и хешируем
-    $hashed_password = password_hash($pass, PASSWORD_DEFAULT);
+    $salt = bin2hex(12); // случайная соль в виде 16-байтовой строки
+    $hashed_password = hash('sha256', $pass . $salt);
 
-    // формируем запрос на добавление пользователя в БД
+    // формируем запрос на редактирование данных пользователя в БД
     $sql = "UPDATE users
             SET pass='$hashed_password',name='$name', surname='$surname', info='$info',email='$email' 
             WHERE login='$login'";

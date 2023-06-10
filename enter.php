@@ -5,6 +5,7 @@
         <meta charset="UTF-8">
         <title>Авторизация</title>
         <link rel="stylesheet" href="style.css">
+        <script src="script.js"></script>
     </head>
     <body>
         <div class="register-form-container">

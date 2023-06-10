@@ -9,19 +9,18 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <meta charset="UTF-8">
   <title>Сайт знакомств</title>
+  <meta charset="UTF-8">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <h1>Добро пожаловать на сайт знакомств</h1>
 
 
-      <h2>Управление сайтом</h2>
-      <ul>
-        <li><a href="view_users.php">Просмотреть пользователей</a></li>
-        <li><a href="delete_user.php">Удалить пользователя</a></li>
-        <li><a href="edit_site.php">Изменить сайт</a></li>
-      </ul>
+        <h2>Управление сайтом:<br>
+        <a href="view_users.php">Просмотреть пользователей</a><br>
+        <a href="delete_user.php">Удалить пользователя</a><br>
+        <a href="exit.php">Выход</a></h2>
  
 
 </body>

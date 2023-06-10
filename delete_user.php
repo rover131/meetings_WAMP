@@ -1,3 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Сайт знакомств</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+  </head>
+</html>
+
 <?php
 // Проверяем вошел ли админ и верная ли у него роль
   session_start(); 
@@ -40,12 +49,17 @@ if ($result->num_rows > 0) {
 
     foreach($result as $row) {
       echo "<tr>";
-      echo "<td>" . $row["id_user"] . "</td>";
-      echo "<td>" . $row["login"] . "</td>";
-      echo "<td>" . $row["name"] . "</td>";
-      echo "<td>" . $row["surname"] . "</td>";
-      echo "<td>" . $row["info"] . "</td>";
-      echo "<td><form method='post'><input type='hidden' name='id_user' value='" . $row["id_user"] . "'><button type='submit' name='delete_user'>Delete</button></form></td>";
+      echo "<td><p class='tid'>" . $row["id_user"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["login"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["name"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["surname"] . "</td></p>";
+      echo "<td><p class='tid'>" . $row["info"] . "</td></p>";
+      echo "<td>
+      <form method='post'>
+      <input type='hidden' name='id_user' value='" . $row["id_user"] . "'>
+      <p class = 'button'><button type='submit' name='delete_user'>Delete</button></p>
+      </form>
+      </td>";
    
       echo "</tr>";
     }
@@ -60,4 +74,5 @@ if (isset($_POST["delete_user"])) {
     mysqli_query($connection, "DELETE FROM users WHERE id_user='$id_user'");
     header("Location: delete_user.php");
 }
+echo "<a href=main_admin.php> Нажмите,</a> чтобы вернуться на главную страницу";
 ?>
